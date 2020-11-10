@@ -1,0 +1,59 @@
+<html>
+<head>
+<style type="text/css">
+body{
+	background-color:gray;
+}
+
+h1{
+	text-align:center;
+	font-size:2.5em;
+}
+
+div {
+	margin:50px;
+	padding:5px;
+	background-color:darkblue;
+	color:white;
+	text-align:center;
+	font-size:1.2em;
+}
+</style>
+<SCRIPT LANGUAGE="Javascript" SRC="./geometrie/point.js"> </SCRIPT>
+</head>
+
+<header>
+<h1> TP 2 </h1>
+</header>
+
+<body>
+<div>
+<h2 id="myTimer"></h2>
+</div>
+</body>
+
+<script>
+var i=10;
+
+var timer;
+var interval=window.setInterval(updateTimer, 1000);
+
+function init(){
+	timer = document.getElementById('myTimer');
+	timer.innerHTML=i;
+}
+
+function updateTimer(){
+	if(i>0){
+		i--;
+		timer.innerHTML=i;
+	}
+	else {
+		window.clearInterval(interval);
+	}
+}
+
+window.addEventListener('load',init);
+</script>
+
+</html>
