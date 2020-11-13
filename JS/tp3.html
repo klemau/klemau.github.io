@@ -1,0 +1,67 @@
+<html>
+<head>
+<style type="text/css">
+canvas{
+	border:1px solid black;
+}
+
+h1 {
+	text-align: center;
+}
+</style>
+<SCRIPT LANGUAGE="Javascript" SRC="./geometrie/point.js"> </SCRIPT>
+</head>
+
+<header>
+	<h1>TP 3 - CANVAS 2 </h1>
+</header>
+
+<body>
+<canvas id="myCanvas" width="500" height="500">
+
+</canvas>
+</ul>
+</body>
+
+<script>
+let SquareFunc = function(width, height,ctx,x,y){
+	this.x=x; this.y=y; this.width=width; this.height=height; this.ctx=ctx; 
+	this.draw=function(){
+		ctx.fillStyle="red"; ctx.fillRect(this.x,this.y, this.width, this.height);
+	};
+	this.clear = function(){
+		ctx.clearRect(this.x, this.y, this.width, this.height);
+	};
+}
+
+let canvas = document.getElementById('myCanvas');
+let ctx = canvas.getContext("2d");
+let moving;
+
+let square = new SquareFunc(25,25,ctx,10,10);
+
+function drawInit(){
+	square.draw();
+	setTimeout(moveRight, 2000);
+}
+
+ function moveRight() { 
+	moving = setInterval(()=>{
+		square.clear(); 
+		square.x += 10;
+		square.draw();
+		if (square.x + square.width >= canvas.width) clearInterval(moving); 
+	}, 100);
+} 
+
+function reset() { 
+	clearInterval(moving);
+	square.clear();
+	square.x = 10; 
+	square.y = 10; 
+	square.draw(); 
+} 
+
+window.addEventListener('load', drawInit); 
+</script>
+</html>
